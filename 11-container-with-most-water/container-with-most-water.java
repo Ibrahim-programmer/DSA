@@ -9,6 +9,7 @@ class Solution {
             if(height[i] >= height[j]) j--;
             else i++;
         }
+        System.gc();
         return maxarea;
     }
 }
