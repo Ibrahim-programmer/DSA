@@ -6,7 +6,7 @@ class Solution {
         mp.put(0,1);
         for(int i=0;i<nums.length;i++){
             current += nums[i];
-            if(mp.keySet().contains(current-k)){
+            if(mp.containsKey(current-k)){
                 count += mp.get(current-k);
             }
             mp.put(current,mp.getOrDefault(current,0)+1);
