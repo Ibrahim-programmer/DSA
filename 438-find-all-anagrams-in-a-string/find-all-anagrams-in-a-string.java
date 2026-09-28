@@ -1,30 +1,35 @@
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        if(s.length() < p.length()) return new ArrayList<>();
-
-        Map<Character,Integer> mp1 = new HashMap<>();
-        Map<Character,Integer> mp2 = new HashMap<>();
-        List<Integer> ans = new ArrayList<>();
-
-        for(char i: p.toCharArray()){
-            mp1.put(i,mp1.getOrDefault(i,0)+1);
+        if (p.length() > s.length()) {
+            return new ArrayList<Integer>();
         }
-
-        int j=0;
-        for(int i=0;i<s.length();i++){
-            mp2.put(s.charAt(i),mp2.getOrDefault(s.charAt(i),0)+1);
-            if(i-j+1 > p.length()){
-               if(mp2.get(s.charAt(j))-1 ==0){
-                    mp2.remove(s.charAt(j));
-               } 
-                else
-                    mp2.put(s.charAt(j),mp2.getOrDefault(s.charAt(j),0)-1);
-                j++;
+        List<Integer> ans = new ArrayList<>();
+        int arr_p[] = new int[26];
+        for (char i : p.toCharArray()) {
+            arr_p[i - 'a']++;
+        }
+        int n = s.length();
+        int i = 0, j = 0;
+        int arr_s[] = new int[26];
+        while (j < n) {
+            arr_s[s.charAt(j) - 'a']++;
+            if (j - i + 1 > p.length()) {
+                arr_s[s.charAt(i) - 'a']--;
+                i++;
             }
-                if(i-j+1 == p.length() && mp2.equals(mp1)){
-                    ans.add(j);
+            if (j - i + 1 == p.length()) {
+
+                boolean check = true;
+                for (int k = 0; k < 26; k++) {
+                    if (arr_p[k] != arr_s[k]) {
+                        check = false;
+                    }
                 }
-            
+                if (check) {
+                    ans.add(i);
+                }
+            }
+            j++;
         }
         return ans;
     }
