@@ -45,18 +45,15 @@ class Solution {
             }
             temp1.val = sum % 10;
             carry = (sum / 10 == 1)? 1 : 0;
+            if(temp1.next == null && carry == 1){
+                temp1.next = new ListNode(1);
+                break;
+            }
             temp1 = temp1.next;
             i++;
 
         }
-        if(carry == 1){
-            ListNode newN = new ListNode(carry);
-            temp1 = head;
-            while(temp1.next != null){
-                temp1 = temp1.next;
-            }
-            temp1.next = newN;
-        }
+        
         return head;
     }
 }
