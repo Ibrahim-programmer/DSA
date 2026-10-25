@@ -35,7 +35,7 @@ class Solution {
         // int current = 1;
         // temp1 = largeHead;
         int sum ;
-        while(temp1 != null){
+        while( temp1 != null){
             if(i < pos){
                 sum = temp1.val + temp2.val + carry;
                 temp2 = temp2.next;
@@ -45,6 +45,11 @@ class Solution {
             }
             temp1.val = sum % 10;
             carry = (sum / 10 == 1)? 1 : 0;
+
+            if(temp2 == null && carry == 0){
+                break;
+            }
+            
             if(temp1.next == null && carry == 1){
                 temp1.next = new ListNode(1);
                 break;
