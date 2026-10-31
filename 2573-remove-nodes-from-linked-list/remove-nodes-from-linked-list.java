@@ -32,20 +32,14 @@ class Solution {
             if(c2.val < c1.val){
                 c1.next = c2.next;
                 c2 = c2.next;
-
             }
             else{
-                c1.next = c2;
                 c1 = c2;
-                c2 = c1.next;
+                c2 = c2.next;
             }
 
         }
-        if(c1 == head){
-            return c1;
-        }
         c1.next = null;
-        //head = reverse(head)
         
         return reverse(head);
     }
