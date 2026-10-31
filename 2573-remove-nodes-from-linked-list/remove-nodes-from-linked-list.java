@@ -10,9 +10,6 @@
  */
 class Solution {
     public ListNode reverse(ListNode head){
-        if(head == null){
-            return null;
-        }
         ListNode t = head;
         ListNode p = null;
         ListNode f = null;
