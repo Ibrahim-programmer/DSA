@@ -16,13 +16,13 @@ class Solution {
             total++;
             t = t.next;
         }
-        int pos = 0;
         if(n== 1 && total == 1 ){
             return null;
         }
         if(total == n){
             return head.next;
         }
+        int pos = 0;
         t = head;
         ListNode p = t;
 
